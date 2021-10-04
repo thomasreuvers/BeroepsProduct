@@ -1,5 +1,7 @@
 package com.game;
 
+import com.game.components.scenes.TitleScene;
+import com.github.hanyaeger.api.Size;
 import com.github.hanyaeger.api.YaegerGame;
 
 public class Game extends YaegerGame {
@@ -10,11 +12,12 @@ public class Game extends YaegerGame {
 
     @Override
     public void setupGame() {
-
+        setGameTitle("Game"); // TODO BEDENK GAME NAAM
+        setSize(new Size(800, 600));
     }
 
     @Override
     public void setupScenes() {
-
+        addScene(0, new TitleScene());
     }
 }
