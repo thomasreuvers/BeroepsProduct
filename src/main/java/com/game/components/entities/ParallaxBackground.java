@@ -26,7 +26,7 @@ public class ParallaxBackground extends DynamicSpriteEntity implements SceneBord
 
     @Override
     public void notifyBoundaryTouching(SceneBorder sceneBorder) {
-        if (sceneBorder == SceneBorder.LEFT && this.getAnchorLocation().getX() <= -getSceneWidth()){
+        if (sceneBorder.equals(SceneBorder.LEFT) && this.getAnchorLocation().getX() <= -getSceneWidth()){
             setAnchorLocationX(0);
             System.out.println("X");
         }
