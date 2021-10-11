@@ -8,8 +8,6 @@ import com.github.hanyaeger.api.entities.impl.DynamicSpriteEntity;
 import com.github.hanyaeger.api.scenes.SceneBorder;
 import com.github.hanyaeger.api.scenes.YaegerScene;
 
-import java.util.Random;
-
 public class ParallaxBackground extends DynamicSpriteEntity implements SceneBorderTouchingWatcher {
     private Size size;
     private String resource;
