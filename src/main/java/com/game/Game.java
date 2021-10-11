@@ -12,7 +12,7 @@ public class Game extends YaegerGame {
 
     @Override
     public void setupGame() {
-        setGameTitle("Game"); // TODO BEDENK GAME NAAM
+        setGameTitle("Snake");
         setSize(new Size(800, 600));
     }
 
