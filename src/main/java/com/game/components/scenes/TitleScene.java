@@ -21,8 +21,8 @@ public class TitleScene extends DynamicScene {
     @Override
     public void setupEntities() {
         addEntity(new ParallaxBackground("backgrounds/parallax-demon-woods-far-trees.png", new Coordinate2D(0, 0), new Size(this.getWidth() * 2, this.getHeight()), this, 40, 1.5));
-        addEntity(new ParallaxBackground("backgrounds/parallax-demon-woods-mid-trees.png", new Coordinate2D(0, 0), new Size(this.getWidth() * 2, this.getHeight()), this, 39, 2.0));
-        addEntity(new ParallaxBackground("backgrounds/parallax-demon-woods-close-trees.png", new Coordinate2D(0, 0), new Size(this.getWidth() * 2, this.getHeight()), this, 38, 2.2));
+        addEntity(new ParallaxBackground("backgrounds/parallax-demon-woods-mid-trees.png", new Coordinate2D(0, 0), new Size(this.getWidth() * 2, this.getHeight()), this, 39, 1.75));
+        addEntity(new ParallaxBackground("backgrounds/parallax-demon-woods-close-trees.png", new Coordinate2D(0, 0), new Size(this.getWidth() * 2, this.getHeight()), this, 38, 2.0));
 
         // Add TextEntities
         addEntity(setupText());
@@ -37,7 +37,6 @@ public class TitleScene extends DynamicScene {
     }
 
     public void addNewEntity(YaegerEntity entity){
-        entity.setViewOrder(entity.getViewOrder());
         addEntity(entity);
     }
 }

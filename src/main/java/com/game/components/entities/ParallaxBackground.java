@@ -9,12 +9,12 @@ import com.github.hanyaeger.api.scenes.SceneBorder;
 import com.github.hanyaeger.api.scenes.YaegerScene;
 
 public class ParallaxBackground extends DynamicSpriteEntity implements SceneBorderTouchingWatcher {
-    private Size size;
-    private String resource;
-    private Coordinate2D initialLocation;
-    private YaegerScene scene;
-    private int viewIndex;
-    private double speed;
+    private final Size size;
+    private final String resource;
+    private final Coordinate2D initialLocation;
+    private final YaegerScene scene;
+    private final int viewIndex;
+    private final double speed;
 
     public ParallaxBackground(String resource, Coordinate2D initialLocation, Size size, YaegerScene scene, int viewIndex, double speed) {
         super(resource, initialLocation, size);
@@ -27,24 +27,24 @@ public class ParallaxBackground extends DynamicSpriteEntity implements SceneBord
         this.speed = speed;
 
         setViewOrder(viewIndex);
-
         setPreserveAspectRatio(false);
         setMotion(speed, Direction.LEFT);
     }
 
     @Override
     public void notifyBoundaryTouching(SceneBorder border) {
-        if (border.equals(SceneBorder.LEFT) && (int)this.getAnchorLocation().getX() == -(this.size.width() / 2 )){
-            System.out.println("Crossed boundary with mid");
-            var x = new Coordinate2D((this.size.width() / 2) - 1, initialLocation.getY());
-            System.out.println(x.getX());
-            ((TitleScene)scene).addNewEntity(new ParallaxBackground(resource, x, size, scene, viewIndex, speed));
+
+        // Check if middle of image touched boundary, if so spawn new image
+        if (border.equals(SceneBorder.LEFT) && Math.round(this.getAnchorLocation().getX() / speed) == -(int)((this.size.width() / speed) / 2 )){
+            System.out.println("Crossed boundary with middle of image: " + resource); // DEBUG
+            var newLocation = new Coordinate2D((this.size.width() / 2), initialLocation.getY());
+            ((TitleScene)scene).addNewEntity(new ParallaxBackground(resource, newLocation, size, scene, viewIndex, speed));
         }
 
-//        if (border.equals(SceneBorder.LEFT) && (int)this.getAnchorLocation().getX() == -(this.size.width())){
-//            this.remove();
-//        }
-
-//        System.out.println(this.getAnchorLocation().getX());
+        // Remove current image from scene if it's past the view
+        if (border.equals(SceneBorder.LEFT) && Math.round(this.getAnchorLocation().getX() / speed) == -(int)(this.size.width() / speed)){
+            System.out.println("Removed: " + resource); // DEBUG
+            this.remove();
+        }
     }
 }
