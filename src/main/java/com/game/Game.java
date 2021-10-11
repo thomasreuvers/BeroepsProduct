@@ -1,5 +1,6 @@
 package com.game;
 
+import com.game.components.scenes.GameLevel;
 import com.game.components.scenes.TitleScene;
 import com.github.hanyaeger.api.Size;
 import com.github.hanyaeger.api.YaegerGame;
@@ -18,6 +19,7 @@ public class Game extends YaegerGame {
 
     @Override
     public void setupScenes() {
-        addScene(0, new TitleScene());
+        addScene(0, new TitleScene(this));
+        addScene(1, new GameLevel());
     }
 }

@@ -1,6 +1,8 @@
 package com.game.components.scenes;
 
+import com.game.Game;
 import com.game.components.entities.ParallaxBackground;
+import com.game.components.entities.buttons.StartButton;
 import com.github.hanyaeger.api.AnchorPoint;
 import com.github.hanyaeger.api.Coordinate2D;
 import com.github.hanyaeger.api.Size;
@@ -12,6 +14,9 @@ import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 
 public class TitleScene extends DynamicScene {
+    private Game game;
+
+    public TitleScene(Game game){ this.game = game; }
 
     @Override
     public void setupScene() {
@@ -26,6 +31,9 @@ public class TitleScene extends DynamicScene {
 
         // Add TextEntities
         addEntity(setupText());
+
+        StartButton startButton = new StartButton(new Coordinate2D(320, 350), game);
+        addEntity(startButton);
     }
 
     private TextEntity setupText() {
