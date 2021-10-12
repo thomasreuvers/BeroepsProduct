@@ -21,6 +21,7 @@ public class TitleScene extends DynamicScene {
     @Override
     public void setupScene() {
         setBackgroundImage("backgrounds/parallax-demon-woods-bg.png");
+        setBackgroundAudio("audio/TitleScreenMusic.mp3");
     }
 
     @Override

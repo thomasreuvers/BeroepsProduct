@@ -3,7 +3,7 @@ module beroepsProduct {
 
     exports com.game;
 
-//    opens audio;
+    opens audio;
     opens backgrounds;
 //    opens sprites;
 }
