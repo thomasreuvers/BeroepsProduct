@@ -2,6 +2,7 @@ package com.game.components.scenes;
 
 import com.game.Game;
 import com.game.components.entities.ParallaxBackground;
+import com.game.components.entities.buttons.ExitButton;
 import com.game.components.entities.buttons.StartButton;
 import com.github.hanyaeger.api.AnchorPoint;
 import com.github.hanyaeger.api.Coordinate2D;
@@ -35,6 +36,9 @@ public class TitleScene extends DynamicScene {
 
         StartButton startButton = new StartButton(new Coordinate2D(320, 350), game);
         addEntity(startButton);
+
+        ExitButton exitButton = new ExitButton(new Coordinate2D(640,0), game);
+        addEntity(exitButton);
     }
 
     private TextEntity setupText() {
