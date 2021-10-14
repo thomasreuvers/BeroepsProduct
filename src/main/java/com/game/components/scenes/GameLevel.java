@@ -1,5 +1,6 @@
 package com.game.components.scenes;
 
+import com.game.Game;
 import com.game.components.entities.platforms.GrassPlatform;
 import com.github.hanyaeger.api.Size;
 import com.github.hanyaeger.api.scenes.DynamicScene;
@@ -10,8 +11,10 @@ import java.util.TimerTask;
 
 public class GameLevel extends DynamicScene {
 
-  public GameLevel(){
-    super();
+  private Game game;
+
+  public GameLevel(Game game){
+    this.game = game;
   }
 
   @Override
