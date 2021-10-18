@@ -4,6 +4,7 @@ import com.game.Game;
 import com.game.components.entities.ParallaxBackground;
 import com.game.components.entities.buttons.ExitButton;
 import com.game.components.entities.buttons.StartButton;
+import com.game.components.helpers.GameConstants;
 import com.github.hanyaeger.api.AnchorPoint;
 import com.github.hanyaeger.api.Coordinate2D;
 import com.github.hanyaeger.api.Size;
@@ -42,7 +43,7 @@ public class TitleScene extends DynamicScene implements EntityScene {
     }
 
     private TextEntity setupText() {
-        var x = new TextEntity(new Coordinate2D(getWidth() / 2 , getHeight() / 2), "Jungle Jumper");
+        var x = new TextEntity(new Coordinate2D(getWidth() / 2 , getHeight() / 2), GameConstants.GAME_NAME);
                 x.setAnchorPoint(AnchorPoint.CENTER_CENTER);
                 x.setFill(Color.GREEN);
                 x.setFont(Font.font("Roboto", FontWeight.EXTRA_BOLD, 80));

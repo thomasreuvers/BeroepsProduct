@@ -1,6 +1,7 @@
 package com.game.components.scenes;
 
 import com.game.Game;
+import com.game.components.entities.Player;
 import com.game.components.entities.PlayerIdle;
 import com.game.components.spawners.PlatformSpawner;
 import com.github.hanyaeger.api.Coordinate2D;
@@ -24,7 +25,7 @@ public class GameLevel extends DynamicScene implements EntitySpawnerContainer {
   @Override
   public void setupEntities() {
 
-    addEntity(new PlayerIdle(new Coordinate2D(400,100), new Size(300, 300)));
+    addEntity(new Player(new Coordinate2D(400,100), new Size(1000, 1000)));
   }
 
   @Override

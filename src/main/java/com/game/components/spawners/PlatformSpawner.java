@@ -1,7 +1,6 @@
 package com.game.components.spawners;
 
 import com.game.components.entities.platforms.GrassPlatform;
-import com.github.hanyaeger.api.Coordinate2D;
 import com.github.hanyaeger.api.Size;
 import com.github.hanyaeger.api.entities.EntitySpawner;
 

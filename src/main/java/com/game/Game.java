@@ -1,5 +1,6 @@
 package com.game;
 
+import com.game.components.helpers.GameConstants;
 import com.game.components.scenes.GameLevel;
 import com.game.components.scenes.TitleScene;
 import com.github.hanyaeger.api.Size;
@@ -13,7 +14,7 @@ public class Game extends YaegerGame {
 
     @Override
     public void setupGame() {
-        setGameTitle("Snake");
+        setGameTitle(GameConstants.GAME_NAME);
         setSize(new Size(800, 600));
     }
 
