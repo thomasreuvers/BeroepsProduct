@@ -13,4 +13,12 @@
         <maven.compiler.target>16</maven.compiler.target>
     </properties>
 
+    <dependencies>
+        <dependency>
+            <groupId>com.github.han-yaeger</groupId>
+            <artifactId>yaeger</artifactId>
+            <version>2021.2022.1</version>
+        </dependency>
+    </dependencies>
+
 </project>
