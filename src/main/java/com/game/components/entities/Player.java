@@ -1,6 +1,7 @@
 package com.game.components.entities;
 
 import com.game.components.entities.platforms.Platform;
+import com.game.components.entities.text.ScoreText;
 import com.github.hanyaeger.api.Coordinate2D;
 import com.github.hanyaeger.api.Size;
 import com.github.hanyaeger.api.entities.Collided;
@@ -14,9 +15,8 @@ import java.util.Set;
 
 public class Player extends DynamicSpriteEntity implements KeyListener, Collider, Collided, Newtonian {
 
-    public Player(Coordinate2D initialLocation, Size size) {
+    public Player(Coordinate2D initialLocation, Size size, ScoreText scoreText) {
         super("sprites/player/player.png", initialLocation, size);
-
 
 //        setAutoCycle(40, 0);
         setGravityConstant(0);
@@ -40,11 +40,9 @@ public class Player extends DynamicSpriteEntity implements KeyListener, Collider
 
     @Override
     public void onCollision(Collider collidingObject) {
-        if (collidingObject instanceof Platform)
+        if (collidingObject instanceof Platform && this.getAnchorLocation().getY() + this.getHeight() > collidingObject.getBoundingBox().getMinY())
         {
-            if (this.getAnchorLocation().getY() + this.getHeight() > collidingObject.getBoundingBox().getMinY()){
-                this.setAnchorLocationY(((Platform) collidingObject).getAnchorLocation().getY() - this.getHeight());
-            }
+            this.setAnchorLocationY(((Platform) collidingObject).getAnchorLocation().getY() - this.getHeight());
         }
     }
 }

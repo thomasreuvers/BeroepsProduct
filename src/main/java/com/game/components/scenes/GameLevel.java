@@ -1,6 +1,7 @@
 package com.game.components.scenes;
 
 import com.game.components.entities.Player;
+import com.game.components.entities.text.ScoreText;
 import com.game.components.spawners.PlatformSpawner;
 import com.github.hanyaeger.api.Coordinate2D;
 import com.github.hanyaeger.api.EntitySpawnerContainer;
@@ -20,7 +21,10 @@ public class GameLevel extends DynamicScene implements EntitySpawnerContainer {
   @Override
   public void setupEntities() {
 
-    addEntity(new Player(new Coordinate2D(400,100), new Size(50, 50)));
+    var scoreText = new ScoreText(new Coordinate2D(0,0));
+    addEntity(scoreText);
+
+    addEntity(new Player(new Coordinate2D(400,100), new Size(50, 50), scoreText));
   }
 
   @Override
