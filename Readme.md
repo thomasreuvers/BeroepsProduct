@@ -1,3 +1,3 @@
-##Beroepsproduct Game
+# Jungle Jumper
 
-Game met de YAEGER Engine gericht op toetsing kennis OOP.
+Jungle Jumper is a game made with the [YAEGER Engine](https://github.com/han-yaeger/yaeger) aimed at testing knowledge about OOP.
