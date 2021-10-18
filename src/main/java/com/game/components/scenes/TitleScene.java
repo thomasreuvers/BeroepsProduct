@@ -42,7 +42,7 @@ public class TitleScene extends DynamicScene {
     }
 
     private TextEntity setupText() {
-        var x = new TextEntity(new Coordinate2D(getWidth() / 2 , getHeight() / 2), "Snake");
+        var x = new TextEntity(new Coordinate2D(getWidth() / 2 , getHeight() / 2), "Jungle Jumper");
                 x.setAnchorPoint(AnchorPoint.CENTER_CENTER);
                 x.setFill(Color.GREEN);
                 x.setFont(Font.font("Roboto", FontWeight.EXTRA_BOLD, 80));
