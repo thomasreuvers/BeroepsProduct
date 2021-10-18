@@ -1,6 +1,5 @@
 package com.game.components.scenes;
 
-import com.game.Game;
 import com.game.components.entities.Player;
 import com.game.components.spawners.PlatformSpawner;
 import com.github.hanyaeger.api.Coordinate2D;
@@ -10,10 +9,7 @@ import com.github.hanyaeger.api.scenes.DynamicScene;
 
 public class GameLevel extends DynamicScene implements EntitySpawnerContainer {
 
-  private Game game;
-
-  public GameLevel(Game game){
-    this.game = game;
+  public GameLevel(){
   }
 
   @Override

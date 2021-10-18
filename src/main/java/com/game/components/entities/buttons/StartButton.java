@@ -13,7 +13,7 @@ import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 
 public class StartButton extends TextEntity implements MouseButtonPressedListener, MouseEnterListener, MouseExitListener {
-  private Game game;
+  private final Game game;
 
   public StartButton(Coordinate2D initialLocation, Game game) {
     super(initialLocation,"Play game");

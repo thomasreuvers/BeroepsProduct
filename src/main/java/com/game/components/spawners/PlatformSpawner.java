@@ -18,7 +18,7 @@ public class PlatformSpawner extends EntitySpawner {
 
     @Override
     protected void spawnEntities() {
-        var rand = new Random().nextInt(10);
+//        var rand = new Random().nextInt(10);
 
 //        if (rand <= 5){
 //            spawn(new GrassPlatform(randomLocation(), platformSize, randomSpeed()));

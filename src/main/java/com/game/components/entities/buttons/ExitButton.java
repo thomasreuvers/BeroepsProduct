@@ -1,7 +1,6 @@
 package com.game.components.entities.buttons;
 
 import com.game.Game;
-import com.github.hanyaeger.api.AnchorPoint;
 import com.github.hanyaeger.api.Coordinate2D;
 import com.github.hanyaeger.api.entities.impl.TextEntity;
 import com.github.hanyaeger.api.userinput.MouseButtonPressedListener;
@@ -14,7 +13,7 @@ import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 
 public class ExitButton extends TextEntity implements MouseButtonPressedListener, MouseEnterListener, MouseExitListener {
-    private Game game;
+    private final Game game;
 
     public ExitButton(Coordinate2D initialLocation, Game game) {
         super(initialLocation,"Quit Game");

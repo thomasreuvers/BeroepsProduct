@@ -1,29 +1,21 @@
 package com.game.components.entities;
 
-import com.game.components.entities.platforms.GrassPlatform;
 import com.game.components.entities.platforms.Platform;
 import com.github.hanyaeger.api.Coordinate2D;
 import com.github.hanyaeger.api.Size;
 import com.github.hanyaeger.api.entities.Collided;
 import com.github.hanyaeger.api.entities.Collider;
-import com.github.hanyaeger.api.entities.Direction;
 import com.github.hanyaeger.api.entities.Newtonian;
 import com.github.hanyaeger.api.entities.impl.DynamicSpriteEntity;
-import com.github.hanyaeger.api.entities.impl.RectangleEntity;
 import com.github.hanyaeger.api.userinput.KeyListener;
-import com.github.hanyaeger.core.entities.motion.MotionApplier;
-import javafx.geometry.Point2D;
 import javafx.scene.input.KeyCode;
 
 import java.util.Set;
 
 public class Player extends DynamicSpriteEntity implements KeyListener, Collider, Collided, Newtonian {
 
-    private final Coordinate2D initialLocation;
-
     public Player(Coordinate2D initialLocation, Size size) {
         super("sprites/player/player.png", initialLocation, size);
-        this.initialLocation = initialLocation;
 
 
 //        setAutoCycle(40, 0);

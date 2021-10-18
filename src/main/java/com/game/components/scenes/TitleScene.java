@@ -16,7 +16,7 @@ import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 
 public class TitleScene extends DynamicScene implements EntityScene {
-    private Game game;
+    private final Game game;
 
     public TitleScene(Game game){ this.game = game; }
 
