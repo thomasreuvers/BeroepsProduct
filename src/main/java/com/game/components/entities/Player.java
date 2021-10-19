@@ -41,9 +41,9 @@ public class Player extends DynamicSpriteEntity implements KeyListener, Collider
             setMotion(getSpeed() * 1.65, Direction.UP);
             isFalling = true;
         }else if (pressedKeys.contains(KeyCode.A)){
-            setMotion(this.getSpeed(), Direction.LEFT);
+            setMotion(this.getSpeed() / 1.2, Direction.LEFT);
         }else if (pressedKeys.contains(KeyCode.D)){
-            setMotion(this.getSpeed(), Direction.RIGHT);
+            setMotion(this.getSpeed() / 1.2, Direction.RIGHT);
         }else if(pressedKeys.contains(KeyCode.ENTER)){
             setGravityConstant(0.3);
             setFrictionConstant(0.04);
@@ -62,6 +62,8 @@ public class Player extends DynamicSpriteEntity implements KeyListener, Collider
             }
             colliderObj = collidingObject;
 
+            setGravityConstant(0.3);
+            setFrictionConstant(0.04);
             this.setAnchorLocationY(((Platform) collidingObject).getAnchorLocation().getY() - this.getHeight());
             this.isFalling = false;
         }
