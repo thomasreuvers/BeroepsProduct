@@ -1,7 +1,6 @@
 package com.game.components.scenes;
 
 import com.game.Game;
-import com.github.hanyaeger.api.entities.YaegerEntity;
 import com.github.hanyaeger.api.scenes.DynamicScene;
 
 public class GameOverScene extends DynamicScene {

@@ -18,40 +18,48 @@ import javafx.scene.input.KeyCode;
 import java.util.Set;
 
 public class Player extends DynamicSpriteEntity implements KeyListener, Collider, Collided, Newtonian, SceneBorderCrossingWatcher {
-    private Game game;
+    private final Game game;
+    private final ScoreText scoreText;
     private boolean isFalling = true;
-    public Player(Coordinate2D initialLocation, Size size, ScoreText scoreText, Game game) {
 
+    private Collider colliderObj;
+
+    public Player(Coordinate2D initialLocation, Size size, ScoreText scoreText, Game game) {
         super("sprites/player/player.png", initialLocation, size);
         this.game = game;
-//        setAutoCycle(40, 0);
+
+        // Initialize player score
+        this.scoreText = scoreText;
 
         setGravityConstant(0);
-        setFrictionConstant(0);
     }
 
     @Override
     public void onPressedKeysChange(Set<KeyCode> pressedKeys) {
         if (pressedKeys.contains(KeyCode.SPACE) && !isFalling) {
-            setMotion(getSpeed() * 1.5, Direction.UP);
-            setGravityConstant(0.3);
-            setFrictionConstant(0.04);
+            setMotion(getSpeed() * 1.65, Direction.UP);
             isFalling = true;
-        }
-        else if (pressedKeys.contains(KeyCode.ENTER)) {
+        }else if (pressedKeys.contains(KeyCode.A)){
+            setMotion(this.getSpeed(), Direction.LEFT);
+        }else if (pressedKeys.contains(KeyCode.D)){
+            setMotion(this.getSpeed(), Direction.RIGHT);
+        }else if(pressedKeys.contains(KeyCode.ENTER)){
             setGravityConstant(0.3);
             setFrictionConstant(0.04);
-        }else if (pressedKeys.contains(KeyCode.A)){
-            setAnchorLocationX(this.getAnchorLocation().getX() - 1 * getSpeed());
-        }else if (pressedKeys.contains(KeyCode.D)){
-            setAnchorLocationX(this.getAnchorLocation().getX() + 1 * getSpeed());
         }
     }
 
     @Override
     public void onCollision(Collider collidingObject) {
-        if (collidingObject instanceof Platform && this.getAnchorLocation().getY() + this.getHeight() > collidingObject.getBoundingBox().getMinY())
+        if (collidingObject instanceof Platform && this.getAnchorLocation().getY() + this.getHeight() >= collidingObject.getBoundingBox().getMinY())
         {
+            // Only increment score if player touches a platform which has not been touched before.
+            if (colliderObj == null || !colliderObj.equals(collidingObject))
+            {
+                scoreText.incrementScore(1);
+            }
+            colliderObj = collidingObject;
+
             this.setAnchorLocationY(((Platform) collidingObject).getAnchorLocation().getY() - this.getHeight());
             this.isFalling = false;
         }
@@ -59,9 +67,9 @@ public class Player extends DynamicSpriteEntity implements KeyListener, Collider
 
   @Override
   public void notifyBoundaryCrossing(SceneBorder sceneBorder) {
-      if (this.getBoundingBox().getMinY() >= this.getSceneHeight()){
-        game.setActiveScene(2);
-        System.out.println("Crossed border");
-      }
+        if (sceneBorder.equals(SceneBorder.BOTTOM))
+        {
+            this.game.setActiveScene(2);
+        }
   }
 }
