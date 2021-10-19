@@ -13,7 +13,7 @@ public class PlatformSpawner extends EntitySpawner {
     private final Size platformSize;
 
     public PlatformSpawner(Size platformSize) {
-        super(500);
+        super(350);
 
         this.platformSize = platformSize;
     }
