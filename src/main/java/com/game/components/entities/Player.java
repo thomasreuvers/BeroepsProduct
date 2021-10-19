@@ -38,12 +38,12 @@ public class Player extends DynamicSpriteEntity implements KeyListener, Collider
     @Override
     public void onPressedKeysChange(Set<KeyCode> pressedKeys) {
         if (pressedKeys.contains(KeyCode.SPACE) && !isFalling) {
-            setMotion(getSpeed() * 1.65, Direction.UP);
+            setMotion(getSpeed() * 1.7, Direction.UP);
             isFalling = true;
         }else if (pressedKeys.contains(KeyCode.A)){
-            setMotion(this.getSpeed() / 1.2, Direction.LEFT);
+            setMotion(1.2, Direction.LEFT);
         }else if (pressedKeys.contains(KeyCode.D)){
-            setMotion(this.getSpeed() / 1.2, Direction.RIGHT);
+            setMotion(1.2, Direction.RIGHT);
         }else if(pressedKeys.contains(KeyCode.ENTER)){
             setGravityConstant(0.3);
             setFrictionConstant(0.04);
