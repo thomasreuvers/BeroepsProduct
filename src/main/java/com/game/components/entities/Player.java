@@ -12,7 +12,6 @@ import com.github.hanyaeger.api.entities.impl.DynamicSpriteEntity;
 import com.github.hanyaeger.api.userinput.KeyListener;
 import javafx.scene.input.KeyCode;
 
-import java.util.Collection;
 import java.util.Set;
 
 public class Player extends DynamicSpriteEntity implements KeyListener, Collider, Collided, Newtonian {
@@ -33,8 +32,6 @@ public class Player extends DynamicSpriteEntity implements KeyListener, Collider
             setGravityConstant(0.3);
             setFrictionConstant(0.04);
             isFalling = true;
-        }else if (pressedKeys.contains(KeyCode.SPACE) && pressedKeys.contains(KeyCode.A) && !isFalling){
-
         }
         else if (pressedKeys.contains(KeyCode.ENTER)) {
             setGravityConstant(0.3);
