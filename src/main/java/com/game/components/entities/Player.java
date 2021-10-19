@@ -1,5 +1,6 @@
 package com.game.components.entities;
 
+import com.game.Game;
 import com.game.components.entities.platforms.Platform;
 import com.game.components.entities.text.ScoreText;
 import com.github.hanyaeger.api.Coordinate2D;
@@ -7,17 +8,19 @@ import com.github.hanyaeger.api.Size;
 import com.github.hanyaeger.api.entities.Collided;
 import com.github.hanyaeger.api.entities.Collider;
 import com.github.hanyaeger.api.entities.Newtonian;
+import com.github.hanyaeger.api.entities.SceneBorderCrossingWatcher;
 import com.github.hanyaeger.api.entities.impl.DynamicSpriteEntity;
+import com.github.hanyaeger.api.scenes.SceneBorder;
 import com.github.hanyaeger.api.userinput.KeyListener;
 import javafx.scene.input.KeyCode;
 
 import java.util.Set;
 
-public class Player extends DynamicSpriteEntity implements KeyListener, Collider, Collided, Newtonian {
-
-    public Player(Coordinate2D initialLocation, Size size, ScoreText scoreText) {
+public class Player extends DynamicSpriteEntity implements KeyListener, Collider, Collided, Newtonian, SceneBorderCrossingWatcher {
+    private Game game;
+    public Player(Coordinate2D initialLocation, Size size, ScoreText scoreText, Game game) {
         super("sprites/player/player.png", initialLocation, size);
-
+        this.game = game;
 //        setAutoCycle(40, 0);
         setGravityConstant(0);
         setFrictionConstant(0);
@@ -45,4 +48,12 @@ public class Player extends DynamicSpriteEntity implements KeyListener, Collider
             this.setAnchorLocationY(((Platform) collidingObject).getAnchorLocation().getY() - this.getHeight());
         }
     }
+
+  @Override
+  public void notifyBoundaryCrossing(SceneBorder sceneBorder) {
+      if (this.getBoundingBox().getMinY() >= this.getSceneHeight()){
+        game.setActiveScene(2);
+        System.out.println("Crossed border");
+      }
+  }
 }
