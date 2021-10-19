@@ -7,4 +7,5 @@ module beroepsProduct {
     opens backgrounds;
     opens sprites;
     opens sprites.player;
+    opens sprites.platform;
 }
