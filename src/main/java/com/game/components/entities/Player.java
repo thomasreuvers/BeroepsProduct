@@ -31,6 +31,7 @@ public class Player extends DynamicSpriteEntity implements KeyListener, Collider
 
         // Initialize player score
         this.scoreText = scoreText;
+        this.scoreText.setScore(0);
 
         setGravityConstant(0);
     }
