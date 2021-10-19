@@ -18,10 +18,9 @@ import javafx.scene.input.KeyCode;
 import java.util.Set;
 
 public class Player extends DynamicSpriteEntity implements KeyListener, Collider, Collided, Newtonian, SceneBorderCrossingWatcher {
-    private Game game;
+    private final Game game;
     private boolean isFalling = true;
     public Player(Coordinate2D initialLocation, Size size, ScoreText scoreText, Game game) {
-
         super("sprites/player/player.png", initialLocation, size);
         this.game = game;
 //        setAutoCycle(40, 0);
