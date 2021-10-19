@@ -26,6 +26,7 @@ public class GameOverScene extends DynamicScene {
 
   @Override
   public void setupEntities() {
+    /* TODO: Total score at game over scene */
     addEntity(setupText());
 
     addEntity(new PlayAgainButton(new Coordinate2D(320, 350), game));
