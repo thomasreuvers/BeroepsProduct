@@ -25,6 +25,7 @@ public class Player extends DynamicSpriteEntity implements KeyListener, Collider
     private Collider colliderObj;
 
     public Player(Coordinate2D initialLocation, Size size, ScoreText scoreText, Game game) {
+
         super("sprites/player/player.png", initialLocation, size);
         this.game = game;
 
