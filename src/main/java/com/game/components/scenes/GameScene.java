@@ -11,8 +11,11 @@ import com.github.hanyaeger.api.scenes.DynamicScene;
 
 public class GameScene extends DynamicScene implements EntitySpawnerContainer {
   private final Game game;
-  public GameScene(Game game){
+  private final ScoreText scoreText;
+
+  public GameScene(Game game, ScoreText scoreText){
     this.game = game;
+    this.scoreText = scoreText;
   }
 
   @Override
@@ -24,8 +27,9 @@ public class GameScene extends DynamicScene implements EntitySpawnerContainer {
   @Override
   public void setupEntities() {
 
-    var scoreText = new ScoreText(new Coordinate2D(0,0));
-    addEntity(scoreText);
+    // Show current score to player
+    scoreText.setAnchorLocation(new Coordinate2D(0, 0));
+    addEntity(this.scoreText);
 
     addEntity(new Player(new Coordinate2D(400,100), new Size(50, 50), scoreText, game));
   }

@@ -58,6 +58,7 @@ public class Player extends DynamicSpriteEntity implements KeyListener, Collider
             if (colliderObj == null || !colliderObj.equals(collidingObject))
             {
                 scoreText.incrementScore(1);
+                scoreText.showScore();
             }
             colliderObj = collidingObject;
 
