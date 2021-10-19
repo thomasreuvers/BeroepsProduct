@@ -23,7 +23,7 @@ public class TitleScene extends DynamicScene implements EntityScene {
     @Override
     public void setupScene() {
         setBackgroundImage("backgrounds/parallax-demon-woods-bg.png");
-        setBackgroundAudio("audio/TitleScreenMusic.mp3");
+        setBackgroundAudio("audio/titleTheme.mp3");
     }
 
     @Override
