@@ -1,6 +1,8 @@
 package com.game.components.spawners;
 
 import com.game.components.entities.platforms.GrassPlatform;
+import com.game.components.entities.platforms.Platform;
+import com.github.hanyaeger.api.Coordinate2D;
 import com.github.hanyaeger.api.Size;
 import com.github.hanyaeger.api.entities.EntitySpawner;
 
@@ -27,8 +29,8 @@ public class PlatformSpawner extends EntitySpawner {
         spawn(new GrassPlatform(randomLocation(), platformSize, randomSpeed()));
     }
 
-    private int randomLocation() {
-        return new Random().nextInt((int) (800 - platformSize.width()));
+    private Coordinate2D randomLocation() {
+        return new Coordinate2D(new Random().nextInt((int) (800 - platformSize.width())), 0 - platformSize.height());
     }
 
     private double randomSpeed()

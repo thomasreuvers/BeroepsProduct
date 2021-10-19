@@ -35,14 +35,12 @@ public class ParallaxBackground extends DynamicSpriteEntity implements SceneBord
 
         // Check if middle of image touched boundary, if so spawn new image
         if (border.equals(SceneBorder.LEFT) && Math.round(this.getAnchorLocation().getX() / speed) == -(int)((this.size.width() / speed) / 2 )){
-            System.out.println("Crossed boundary with middle of image: " + resource); // DEBUG
             var newLocation = new Coordinate2D((this.size.width() / 2), initialLocation.getY());
             scene.addNewEntity(new ParallaxBackground(resource, newLocation, size, scene, viewIndex, speed));
         }
 
         // Remove current image from scene if it's past the view
         if (border.equals(SceneBorder.LEFT) && Math.round(this.getAnchorLocation().getX() / speed) == -(int)(this.size.width() / speed)){
-            System.out.println("Removed: " + resource); // DEBUG
             this.remove();
         }
     }
