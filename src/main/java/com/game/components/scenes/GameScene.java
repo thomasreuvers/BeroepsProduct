@@ -9,9 +9,9 @@ import com.github.hanyaeger.api.EntitySpawnerContainer;
 import com.github.hanyaeger.api.Size;
 import com.github.hanyaeger.api.scenes.DynamicScene;
 
-public class GameLevel extends DynamicScene implements EntitySpawnerContainer {
+public class GameScene extends DynamicScene implements EntitySpawnerContainer {
   private final Game game;
-  public GameLevel(Game game){
+  public GameScene(Game game){
     this.game = game;
   }
 
