@@ -5,6 +5,6 @@ module beroepsProduct {
 
     opens audio;
     opens backgrounds;
-    opens sprites;
     opens sprites.player;
+    opens sprites.platform;
 }

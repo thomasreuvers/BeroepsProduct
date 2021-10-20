@@ -1,50 +1,90 @@
 package com.game.components.entities;
 
+import com.game.Game;
 import com.game.components.entities.platforms.Platform;
+import com.game.components.entities.text.ScoreText;
 import com.github.hanyaeger.api.Coordinate2D;
 import com.github.hanyaeger.api.Size;
 import com.github.hanyaeger.api.entities.Collided;
 import com.github.hanyaeger.api.entities.Collider;
+import com.github.hanyaeger.api.entities.Direction;
 import com.github.hanyaeger.api.entities.Newtonian;
+import com.github.hanyaeger.api.entities.SceneBorderCrossingWatcher;
 import com.github.hanyaeger.api.entities.impl.DynamicSpriteEntity;
+import com.github.hanyaeger.api.scenes.SceneBorder;
 import com.github.hanyaeger.api.userinput.KeyListener;
 import javafx.scene.input.KeyCode;
 
 import java.util.Set;
 
-public class Player extends DynamicSpriteEntity implements KeyListener, Collider, Collided, Newtonian {
+public class Player extends DynamicSpriteEntity implements KeyListener, Collider, Collided, Newtonian, SceneBorderCrossingWatcher {
+    private final Game game;
+    private final ScoreText scoreText;
+    private boolean isFalling = true;
 
-    public Player(Coordinate2D initialLocation, Size size) {
+    private Collider colliderObj;
+
+    public Player(Coordinate2D initialLocation, Size size, ScoreText scoreText, Game game) {
+
         super("sprites/player/player.png", initialLocation, size);
+        this.game = game;
 
+        // Initialize player score
+        this.scoreText = scoreText;
+        this.scoreText.setScore(0);
 
-//        setAutoCycle(40, 0);
         setGravityConstant(0);
-        setFrictionConstant(0);
     }
 
     @Override
     public void onPressedKeysChange(Set<KeyCode> pressedKeys) {
-        if (pressedKeys.contains(KeyCode.SPACE)){
-            this.setAnchorLocationY(this.getAnchorLocation().getY() - 100.0);
-            System.out.println("Jump");
-        }else if (pressedKeys.contains(KeyCode.ENTER)) {
+        if (pressedKeys.contains(KeyCode.SPACE) && !isFalling) {
+            setMotion(getSpeed() * 1.7, Direction.UP);
+            isFalling = true;
+        }else if (pressedKeys.contains(KeyCode.A)){
+            setMotion(1.2, Direction.LEFT);
+        }else if (pressedKeys.contains(KeyCode.D)){
+            setMotion(1.2, Direction.RIGHT);
+        }else if(pressedKeys.contains(KeyCode.ENTER)){
             setGravityConstant(0.3);
             setFrictionConstant(0.04);
-        }else if (pressedKeys.contains(KeyCode.A)){
-            setAnchorLocationX(this.getAnchorLocation().getX() - 10);
-        }else if (pressedKeys.contains(KeyCode.D)){
-            setAnchorLocationX(this.getAnchorLocation().getX() + 10);
         }
     }
 
+    /**
+     *  Check if the colliding object is an instance of platform and if the player Y + height >= to bounding box.
+     *  If true increment score and snap player to platform top.
+     * @param collidingObject Object the player collides with
+     */
     @Override
     public void onCollision(Collider collidingObject) {
-        if (collidingObject instanceof Platform)
+        if (collidingObject instanceof Platform && this.getAnchorLocation().getY() + this.getHeight() >= collidingObject.getBoundingBox().getMinY())
         {
-            if (this.getAnchorLocation().getY() + this.getHeight() > collidingObject.getBoundingBox().getMinY()){
-                this.setAnchorLocationY(((Platform) collidingObject).getAnchorLocation().getY() - this.getHeight());
+            // Only increment score if player touches a platform which has not been touched before.
+            if (colliderObj == null || !colliderObj.equals(collidingObject))
+            {
+                scoreText.incrementScore(1);
+                scoreText.showScore();
             }
+            colliderObj = collidingObject;
+
+            setGravityConstant(0.3);
+            setFrictionConstant(0.04);
+            this.setAnchorLocationY(((Platform) collidingObject).getAnchorLocation().getY() - this.getHeight());
+            this.isFalling = false;
         }
     }
+
+    /**
+     * Player touched bottom border. In other words' player died.
+     * Switch to GameOver scene
+      * @param sceneBorder Border of the scene
+     */
+  @Override
+  public void notifyBoundaryCrossing(SceneBorder sceneBorder) {
+        if (sceneBorder.equals(SceneBorder.BOTTOM))
+        {
+            this.game.setActiveScene(2);
+        }
+  }
 }
