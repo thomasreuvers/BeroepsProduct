@@ -29,7 +29,7 @@ public class PlatformSpawner extends EntitySpawner {
     }
 
     private Coordinate2D randomLocation() {
-        return new Coordinate2D(new Random().nextInt((int) (800 - platformSize.width())), 0 - platformSize.height());
+        return new Coordinate2D(new Random().nextInt((int) (800 - platformSize.width())), 0);
     }
 
     private double randomSpeed()
