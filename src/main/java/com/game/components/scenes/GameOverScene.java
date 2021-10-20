@@ -36,6 +36,10 @@ public class GameOverScene extends DynamicScene {
     addEntity(new ExitButton(new Coordinate2D(640,0), game));
   }
 
+  /**
+   * Construct a game over text entity
+   * @return new TextEntity
+   */
   private TextEntity setupText() {
     var x = new TextEntity(new Coordinate2D(getWidth() / 2 , getHeight() / 2), GameConstants.GAME_OVER_TXT);
     x.setAnchorPoint(AnchorPoint.CENTER_CENTER);

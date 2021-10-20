@@ -51,6 +51,11 @@ public class Player extends DynamicSpriteEntity implements KeyListener, Collider
         }
     }
 
+    /**
+     *  Check if the colliding object is an instance of platform and if the player Y + height >= to bounding box.
+     *  If true increment score and snap player to platform top.
+     * @param collidingObject Object the player collides with
+     */
     @Override
     public void onCollision(Collider collidingObject) {
         if (collidingObject instanceof Platform && this.getAnchorLocation().getY() + this.getHeight() >= collidingObject.getBoundingBox().getMinY())
@@ -70,6 +75,11 @@ public class Player extends DynamicSpriteEntity implements KeyListener, Collider
         }
     }
 
+    /**
+     * Player touched bottom border. In other words' player died.
+     * Switch to GameOver scene
+      * @param sceneBorder Border of the scene
+     */
   @Override
   public void notifyBoundaryCrossing(SceneBorder sceneBorder) {
         if (sceneBorder.equals(SceneBorder.BOTTOM))

@@ -28,10 +28,18 @@ public class PlatformSpawner extends EntitySpawner {
         spawn(new GrassPlatform(randomLocation(), platformSize, randomSpeed()));
     }
 
+    /**
+     * Generate a random Coordinate2D within scene bounds
+     * @return new Coordinate2D
+     */
     private Coordinate2D randomLocation() {
         return new Coordinate2D(new Random().nextInt((int) (800 - platformSize.width())), 0);
     }
 
+    /**
+     * Generate a random movement speed
+     * @return double speed
+     */
     private double randomSpeed()
     {
         return 1.0 + (2.5 - 1.0) * new Random().nextDouble();

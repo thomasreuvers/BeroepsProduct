@@ -42,6 +42,10 @@ public class TitleScene extends DynamicScene implements EntityScene {
         addEntity(exitButton);
     }
 
+    /**
+     * Construct game name text entity
+     * @return new TextEntity
+     */
     private TextEntity setupText() {
         var x = new TextEntity(new Coordinate2D(getWidth() / 2 , getHeight() / 2), GameConstants.GAME_NAME);
                 x.setAnchorPoint(AnchorPoint.CENTER_CENTER);
@@ -50,6 +54,10 @@ public class TitleScene extends DynamicScene implements EntityScene {
         return x;
     }
 
+    /**
+     * Add a new entity to the scene
+     * @param entity YaegerEntity
+     */
     public void addNewEntity(YaegerEntity entity){
         addEntity(entity);
     }

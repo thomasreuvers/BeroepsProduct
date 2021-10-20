@@ -19,10 +19,17 @@ public class ScoreText extends TextEntity {
         setText(GameConstants.SCORE_TXT + score);
     }
 
+    /**
+     * Increment the score by the given incrementer
+     * @param incrementer amount to increment the score with
+     */
     public void incrementScore(int incrementer) {
         score += incrementer;
     }
 
+    /**
+     * Show the current score
+     */
     public void showScore() {
         setText(GameConstants.SCORE_TXT + score);
     }
