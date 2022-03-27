@@ -12,31 +12,16 @@ import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 
-public class ExitButton extends TextEntity implements MouseButtonPressedListener, MouseEnterListener, MouseExitListener {
+public class ExitButton extends Button {
     private final Game game;
 
     public ExitButton(Coordinate2D initialLocation, Game game) {
         super(initialLocation,"Quit Game");
-        setFill(Color.PALEGREEN);
-        setFont(Font.font("Roboto", FontWeight.BOLD, 30));
-
         this.game = game;
     }
 
     @Override
     public void onMouseButtonPressed(MouseButton button, Coordinate2D coordinate2D) {
         game.quit();
-    }
-
-    @Override
-    public void onMouseEntered() {
-        setFill(Color.GREENYELLOW);
-        setCursor(Cursor.HAND);
-    }
-
-    @Override
-    public void onMouseExited() {
-        setFill(Color.PALEGREEN);
-        setCursor(Cursor.DEFAULT);
     }
 }

@@ -34,10 +34,6 @@ public class ScoreText extends TextEntity {
         setText(GameConstants.SCORE_TXT + score);
     }
 
-    public int getScore() {
-        return score;
-    }
-
     public void setScore(int score) {
         this.score = score;
     }

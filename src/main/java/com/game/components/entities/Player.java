@@ -70,7 +70,7 @@ public class Player extends DynamicSpriteEntity implements KeyListener, Collider
 
             setGravityConstant(0.3);
             setFrictionConstant(0.04);
-            this.setAnchorLocationY(((Platform) collidingObject).getAnchorLocation().getY() - this.getHeight());
+//            this.setAnchorLocationY(((Platform) collidingObject).getAnchorLocation().getY() - this.getHeight());
             this.isFalling = false;
         }
     }

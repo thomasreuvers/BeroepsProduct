@@ -12,31 +12,16 @@ import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 
-public class PlayAgainButton extends TextEntity implements MouseButtonPressedListener, MouseEnterListener, MouseExitListener {
+public class PlayAgainButton extends Button {
   private final Game game;
 
   public PlayAgainButton(Coordinate2D initialLocation, Game game) {
     super(initialLocation, "Play Again");
-    setFill(Color.PALEGREEN);
-    setFont(Font.font("Roboto", FontWeight.BOLD, 30));
-
     this.game = game;
   }
 
   @Override
   public void onMouseButtonPressed(MouseButton mouseButton, Coordinate2D coordinate2D) {
     game.setActiveScene(1);
-  }
-
-  @Override
-  public void onMouseEntered() {
-    setFill(Color.GREENYELLOW);
-    setCursor(Cursor.HAND);
-  }
-
-  @Override
-  public void onMouseExited() {
-    setFill(Color.PALEGREEN);
-    setCursor(Cursor.DEFAULT);
   }
 }
