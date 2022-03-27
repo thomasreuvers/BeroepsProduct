@@ -19,4 +19,8 @@ public abstract class Platform extends DynamicSpriteEntity implements SceneBorde
     public void notifyBoundaryCrossing(SceneBorder border) {
         remove();
     }
+
+    public double doDamage() {
+        return 0.0;
+    }
 }

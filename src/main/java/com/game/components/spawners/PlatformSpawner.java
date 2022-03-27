@@ -1,6 +1,7 @@
 package com.game.components.spawners;
 
 import com.game.components.entities.platforms.GrassPlatform;
+import com.game.components.entities.platforms.SpikePlatform;
 import com.github.hanyaeger.api.Coordinate2D;
 import com.github.hanyaeger.api.Size;
 import com.github.hanyaeger.api.entities.EntitySpawner;
@@ -19,13 +20,13 @@ public class PlatformSpawner extends EntitySpawner {
 
     @Override
     protected void spawnEntities() {
-//        var rand = new Random().nextInt(10);
+        var rand = new Random().nextInt(10);
 
-//        if (rand <= 5){
-//            spawn(new GrassPlatform(randomLocation(), platformSize, randomSpeed()));
-//        }
-
-        spawn(new GrassPlatform(randomLocation(), platformSize, randomSpeed()));
+        if (rand <= 8){
+            spawn(new GrassPlatform(randomLocation(), platformSize, randomSpeed()));
+        }else {
+            spawn(new SpikePlatform(randomLocation(), platformSize, randomSpeed()));
+        }
     }
 
     /**

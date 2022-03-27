@@ -3,7 +3,6 @@ package com.game.components.scenes;
 import com.game.Game;
 import com.game.components.entities.buttons.ExitButton;
 import com.game.components.entities.buttons.PlayAgainButton;
-import com.game.components.entities.text.ScoreText;
 import com.game.components.helpers.GameConstants;
 import com.github.hanyaeger.api.AnchorPoint;
 import com.github.hanyaeger.api.Coordinate2D;
@@ -15,11 +14,9 @@ import javafx.scene.text.FontWeight;
 
 public class GameOverScene extends DynamicScene {
   private final Game game;
-  private final ScoreText scoreText;
 
-  public GameOverScene(Game game, ScoreText scoreText) {
+  public GameOverScene(Game game) {
     this.game = game;
-    this.scoreText = scoreText;
   }
 
   @Override

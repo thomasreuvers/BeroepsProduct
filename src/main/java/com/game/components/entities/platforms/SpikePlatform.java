@@ -4,10 +4,10 @@ import com.github.hanyaeger.api.Coordinate2D;
 import com.github.hanyaeger.api.Size;
 import com.github.hanyaeger.api.scenes.SceneBorder;
 
-public class GrassPlatform extends Platform {
+public class SpikePlatform extends Platform {
 
-    public GrassPlatform(Coordinate2D initialLocation, Size size, double speed) {
-        super("sprites/platform/platform.png", initialLocation , size, speed);
+    public SpikePlatform(Coordinate2D initialLocation, Size size, double speed) {
+        super("backgrounds/game-bg.png", initialLocation, size, speed);
     }
 
     @Override
@@ -15,5 +15,8 @@ public class GrassPlatform extends Platform {
         super.notifyBoundaryCrossing(border);
     }
 
-
+    @Override
+    public double doDamage() {
+        return 0.5;
+    }
 }

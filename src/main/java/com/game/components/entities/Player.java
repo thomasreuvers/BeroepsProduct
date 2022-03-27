@@ -1,7 +1,9 @@
 package com.game.components.entities;
 
 import com.game.Game;
+import com.game.components.entities.platforms.GrassPlatform;
 import com.game.components.entities.platforms.Platform;
+import com.game.components.entities.text.HealthText;
 import com.game.components.entities.text.ScoreText;
 import com.github.hanyaeger.api.Coordinate2D;
 import com.github.hanyaeger.api.Size;
@@ -20,11 +22,13 @@ import java.util.Set;
 public class Player extends DynamicSpriteEntity implements KeyListener, Collider, Collided, Newtonian, SceneBorderCrossingWatcher {
     private final Game game;
     private final ScoreText scoreText;
+    private final HealthText healthText;
+
     private boolean isFalling = true;
 
     private Collider colliderObj;
 
-    public Player(Coordinate2D initialLocation, Size size, ScoreText scoreText, Game game) {
+    public Player(Coordinate2D initialLocation, Size size, ScoreText scoreText, HealthText healthText, Game game) {
 
         super("sprites/player/player.png", initialLocation, size);
         this.game = game;
@@ -33,21 +37,23 @@ public class Player extends DynamicSpriteEntity implements KeyListener, Collider
         this.scoreText = scoreText;
         this.scoreText.setScore(0);
 
+        // Initialize player health
+        this.healthText = healthText;
+        this.healthText.setHealth(3.0);
+
+        // Freeze player until collision with a platform happened
         setGravityConstant(0);
     }
 
     @Override
     public void onPressedKeysChange(Set<KeyCode> pressedKeys) {
         if (pressedKeys.contains(KeyCode.SPACE) && !isFalling) {
-            setMotion(getSpeed() * 1.7, Direction.UP);
+            setMotion(getSpeed() * 1.75, Direction.UP);
             isFalling = true;
         }else if (pressedKeys.contains(KeyCode.A)){
-            setMotion(1.2, Direction.LEFT);
+            setMotion(1.5, Direction.LEFT);
         }else if (pressedKeys.contains(KeyCode.D)){
-            setMotion(1.2, Direction.RIGHT);
-        }else if(pressedKeys.contains(KeyCode.ENTER)){
-            setGravityConstant(0.3);
-            setFrictionConstant(0.04);
+            setMotion(1.5, Direction.RIGHT);
         }
     }
 
@@ -60,18 +66,29 @@ public class Player extends DynamicSpriteEntity implements KeyListener, Collider
     public void onCollision(Collider collidingObject) {
         if (collidingObject instanceof Platform && this.getAnchorLocation().getY() + this.getHeight() >= collidingObject.getBoundingBox().getMinY())
         {
-            // Only increment score if player touches a platform which has not been touched before.
-            if (colliderObj == null || !colliderObj.equals(collidingObject))
-            {
-                scoreText.incrementScore(1);
-                scoreText.showScore();
-            }
-            colliderObj = collidingObject;
+            if (collidingObject instanceof GrassPlatform){
+                // Only increment score if player touches a platform which has not been touched before.
+                if (colliderObj == null || !colliderObj.equals(collidingObject))
+                {
+                    scoreText.incrementScore(1);
+                    scoreText.showScore();
+                }
+                colliderObj = collidingObject;
 
-            setGravityConstant(0.3);
-            setFrictionConstant(0.04);
-//            this.setAnchorLocationY(((Platform) collidingObject).getAnchorLocation().getY() - this.getHeight());
-            this.isFalling = false;
+                setGravityConstant(0.3);
+                setFrictionConstant(0.04);
+                this.isFalling = false;
+                this.setAnchorLocationY(((Platform) collidingObject).getAnchorLocation().getY() - this.getHeight());
+            }else {
+                healthText.decreaseHealth(((Platform) collidingObject).doDamage());
+                ((Platform) collidingObject).remove();
+
+                if ((healthText.getHealth() - (((Platform) collidingObject).doDamage()) <= 0)) {
+                    game.setActiveScene(2);
+                }
+
+                healthText.showHealth();
+            }
         }
     }
 

@@ -4,4 +4,5 @@ public class GameConstants {
     public static final String GAME_NAME = "Jungle Jumper";
     public static final String GAME_OVER_TXT = "Game Over!";
     public static final String SCORE_TXT = "Score: ";
+    public static final String HEALTH_TXT= "Health: ";
 }

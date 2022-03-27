@@ -1,17 +1,18 @@
 package com.game;
 
+import com.game.components.entities.text.HealthText;
 import com.game.components.entities.text.ScoreText;
 import com.game.components.helpers.GameConstants;
 import com.game.components.scenes.GameScene;
 import com.game.components.scenes.GameOverScene;
 import com.game.components.scenes.TitleScene;
-import com.github.hanyaeger.api.Coordinate2D;
 import com.github.hanyaeger.api.Size;
 import com.github.hanyaeger.api.YaegerGame;
 
 public class Game extends YaegerGame {
 
     private final ScoreText scoreText = new ScoreText();
+    private final HealthText healthText = new HealthText();
 
     public static void main(String[] args) {
         launch(args);
@@ -26,7 +27,7 @@ public class Game extends YaegerGame {
     @Override
     public void setupScenes() {
         addScene(0, new TitleScene(this));
-        addScene(1, new GameScene(this, scoreText));
-        addScene(2, new GameOverScene(this, scoreText));
+        addScene(1, new GameScene(this, scoreText, healthText));
+        addScene(2, new GameOverScene(this));
     }
 }
