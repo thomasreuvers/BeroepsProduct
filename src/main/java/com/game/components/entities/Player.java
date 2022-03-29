@@ -80,12 +80,12 @@ public class Player extends DynamicSpriteEntity implements KeyListener, Collider
                 this.isFalling = false;
                 this.setAnchorLocationY(((Platform) collidingObject).getAnchorLocation().getY() - this.getHeight());
             }else {
-                healthText.decreaseHealth(((Platform) collidingObject).doDamage());
-                ((Platform) collidingObject).remove();
-
                 if ((healthText.getHealth() - (((Platform) collidingObject).doDamage()) <= 0)) {
                     game.setActiveScene(2);
                 }
+
+                healthText.decreaseHealth(((Platform) collidingObject).doDamage());
+                ((Platform) collidingObject).remove();
 
                 healthText.showHealth();
             }

@@ -7,7 +7,7 @@ import com.github.hanyaeger.api.scenes.SceneBorder;
 public class SpikePlatform extends Platform {
 
     public SpikePlatform(Coordinate2D initialLocation, Size size, double speed) {
-        super("backgrounds/game-bg.png", initialLocation, size, speed);
+        super("sprites/platform/spikePlatform.png", initialLocation, size, speed);
     }
 
     @Override
