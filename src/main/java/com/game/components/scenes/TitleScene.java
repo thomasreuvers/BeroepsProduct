@@ -48,9 +48,9 @@ public class TitleScene extends DynamicScene implements EntityScene {
      */
     private TextEntity setupText() {
         var x = new TextEntity(new Coordinate2D(getWidth() / 2 , getHeight() / 2), GameConstants.GAME_NAME);
-                x.setAnchorPoint(AnchorPoint.CENTER_CENTER);
-                x.setFill(Color.GREEN);
-                x.setFont(Font.font("Roboto", FontWeight.EXTRA_BOLD, 80));
+        x.setAnchorPoint(AnchorPoint.CENTER_CENTER);
+        x.setFill(Color.GREEN);
+        x.setFont(Font.font("Roboto", FontWeight.EXTRA_BOLD, 80));
         return x;
     }
 
