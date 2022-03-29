@@ -11,14 +11,14 @@ import com.github.hanyaeger.api.Size;
 import com.github.hanyaeger.api.scenes.DynamicScene;
 
 public class GameScene extends DynamicScene implements EntitySpawnerContainer {
-  private final Game game;
-  private final ScoreText scoreText;
-  private final HealthText healthText;
+  private final Game GAME;
+  private final ScoreText SCORE_TEXT;
+  private final HealthText HEALTH_TEXT;
 
   public GameScene(Game game, ScoreText scoreText, HealthText healthText){
-    this.game = game;
-    this.scoreText = scoreText;
-    this.healthText = healthText;
+    this.GAME = game;
+    this.SCORE_TEXT = scoreText;
+    this.HEALTH_TEXT = healthText;
   }
 
   @Override
@@ -31,14 +31,14 @@ public class GameScene extends DynamicScene implements EntitySpawnerContainer {
   public void setupEntities() {
 
     // Show current score to player
-    scoreText.setAnchorLocation(new Coordinate2D(0, 0));
-    addEntity(this.scoreText);
+    SCORE_TEXT.setAnchorLocation(new Coordinate2D(0, 0));
+    addEntity(this.SCORE_TEXT);
 
     // Show current health to player
-    healthText.setAnchorLocation(new Coordinate2D(0, 30));
-    addEntity(this.healthText);
+    HEALTH_TEXT.setAnchorLocation(new Coordinate2D(0, 30));
+    addEntity(this.HEALTH_TEXT);
 
-    addEntity(new Player(new Coordinate2D(400,100), new Size(50, 50), scoreText, healthText, game));
+    addEntity(new Player(new Coordinate2D(400,100), new Size(50, 50), SCORE_TEXT, HEALTH_TEXT, GAME));
   }
 
   @Override

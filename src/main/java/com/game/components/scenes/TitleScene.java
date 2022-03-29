@@ -16,9 +16,9 @@ import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 
 public class TitleScene extends DynamicScene implements EntityScene {
-    private final Game game;
+    private final Game GAME;
 
-    public TitleScene(Game game){ this.game = game; }
+    public TitleScene(Game game){ this.GAME = game; }
 
     @Override
     public void setupScene() {
@@ -35,10 +35,10 @@ public class TitleScene extends DynamicScene implements EntityScene {
         // Add TextEntities
         addEntity(setupText());
 
-        StartButton startButton = new StartButton(new Coordinate2D(320, 350), game);
+        StartButton startButton = new StartButton(new Coordinate2D(320, 350), GAME);
         addEntity(startButton);
 
-        ExitButton exitButton = new ExitButton(new Coordinate2D(640,0), game);
+        ExitButton exitButton = new ExitButton(new Coordinate2D(640,0), GAME);
         addEntity(exitButton);
     }
 

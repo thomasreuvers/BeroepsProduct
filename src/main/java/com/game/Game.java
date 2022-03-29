@@ -11,8 +11,8 @@ import com.github.hanyaeger.api.YaegerGame;
 
 public class Game extends YaegerGame {
 
-    private final ScoreText scoreText = new ScoreText();
-    private final HealthText healthText = new HealthText();
+    private final ScoreText SCORE_TEXT = new ScoreText();
+    private final HealthText HEALTH_TEXT = new HealthText();
 
     public static void main(String[] args) {
         launch(args);
@@ -27,7 +27,7 @@ public class Game extends YaegerGame {
     @Override
     public void setupScenes() {
         addScene(0, new TitleScene(this));
-        addScene(1, new GameScene(this, scoreText, healthText));
+        addScene(1, new GameScene(this, SCORE_TEXT, HEALTH_TEXT));
         addScene(2, new GameOverScene(this));
     }
 }

@@ -13,10 +13,10 @@ import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 
 public class GameOverScene extends DynamicScene {
-  private final Game game;
+  private final Game GAME;
 
   public GameOverScene(Game game) {
-    this.game = game;
+    this.GAME = game;
   }
 
   @Override
@@ -28,9 +28,9 @@ public class GameOverScene extends DynamicScene {
   public void setupEntities() {
     addEntity(setupText());
 
-    addEntity(new PlayAgainButton(new Coordinate2D(320, 350), game));
+    addEntity(new PlayAgainButton(new Coordinate2D(320, 350), GAME));
 
-    addEntity(new ExitButton(new Coordinate2D(640,0), game));
+    addEntity(new ExitButton(new Coordinate2D(640,0), GAME));
   }
 
   /**
