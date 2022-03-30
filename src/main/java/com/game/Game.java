@@ -28,6 +28,6 @@ public class Game extends YaegerGame {
     public void setupScenes() {
         addScene(0, new TitleScene(this));
         addScene(1, new GameScene(this, SCORE_TEXT, HEALTH_TEXT));
-        addScene(2, new GameOverScene(this));
+        addScene(2, new GameOverScene(this, SCORE_TEXT));
     }
 }
